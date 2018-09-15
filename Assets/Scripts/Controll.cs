@@ -6,6 +6,7 @@ public class Controll : MonoBehaviour {
     Rigidbody2D rbody;
     Transform trans;
     public int speed = 100;
+    public Bullet bullet;
     // Use this for initialization
     void Start () {
         rbody = gameObject.GetComponent<Rigidbody2D>();
@@ -32,6 +33,10 @@ public class Controll : MonoBehaviour {
         {
             float direction = -(trans.rotation.eulerAngles.z - 90) * Mathf.PI / 180;
             rbody.AddForce(new Vector2(force * Mathf.Cos(direction), -force * Mathf.Sin(direction)));
+        }
+        if (Input.GetKey(KeyCode.Space))
+        {
+            GameObject bullet = Instantiate(Resources.Load("Bullet"), new Vector3(trans.position.x, trans.position.y,0), Quaternion.identity) as GameObject;
         }
     }
 }
