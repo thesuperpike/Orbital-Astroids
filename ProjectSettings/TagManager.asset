@@ -38,6 +38,12 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: Orbital
+    uniqueID: 101416815
+    locked: 0
+  - name: Orbital Filler
+    uniqueID: 2112517035
+    locked: 0
   - name: Default
     uniqueID: 0
     locked: 0
