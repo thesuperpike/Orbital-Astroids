@@ -3,9 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Bullet : MonoBehaviour {
-
-	// Use this for initialization
-	void Start () {
+    private Vector2 initVel;
+    private Vector2 initDir;
+    // Use this for initialization
+    void Start () {
 		
 	}
 	

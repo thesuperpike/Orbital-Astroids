@@ -36,7 +36,9 @@ public class Controll : MonoBehaviour {
         }
         if (Input.GetKey(KeyCode.Space))
         {
-            GameObject bullet = Instantiate(Resources.Load("Bullet"), new Vector3(trans.position.x, trans.position.y,0), Quaternion.identity) as GameObject;
+            float direction = -(trans.rotation.eulerAngles.z - 90) * Mathf.PI / 180;
+            GameObject bullet = Instantiate(Resources.Load("Bullet"), new Vector3(trans.position.x - (Mathf.Cos(direction) / 3), trans.position.y + (Mathf.Sin(direction) / 3), 0), Quaternion.identity) as GameObject;
+            bullet.GetComponent<Rigidbody2D>().velocity = GetComponent<Rigidbody2D>().velocity;
         }
     }
 }

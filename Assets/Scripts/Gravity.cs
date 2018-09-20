@@ -13,10 +13,6 @@ public class Gravity : MonoBehaviour {
         rbody = gameObject.GetComponent<Rigidbody2D>();
         trans = gameObject.GetComponent<Transform>();
         mass = rbody.mass;
-        float x = trans.position.x;
-        float y = trans.position.y;
-        float r = Mathf.Sqrt((x * x) + (y * y));
-        rbody.velocity = new Vector2((-Mathf.Sqrt(speedScale * mass) * y / (Mathf.Sqrt(r) * r)), (Mathf.Sqrt(speedScale * mass) * x / (Mathf.Sqrt(r) * r)));
     }
 	
 	// Update is called once per frame
