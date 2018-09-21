@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Gravity : MonoBehaviour {
-    public float speedScale = 10;
+    public static float speedScale = 3;
     Rigidbody2D rbody;
     Transform trans;
     float mass;

@@ -66,6 +66,7 @@
     <Compile Include="Assets\Scripts\Controll.cs" />
     <Compile Include="Assets\Scripts\Gravity.cs" />
     <Compile Include="Assets\Scripts\Orbit.cs" />
+    <Compile Include="Assets\Scripts\ZoomOut.cs" />
     <Reference Include="UnityEditor.StandardEvents">
       <HintPath>C:/Users/thesu/git/Orbital-Astroids/Library/ScriptAssemblies/UnityEditor.StandardEvents.dll</HintPath>
     </Reference>

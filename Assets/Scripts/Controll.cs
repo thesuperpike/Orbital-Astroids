@@ -5,10 +5,9 @@ using UnityEngine;
 public class Controll : MonoBehaviour {
     Rigidbody2D rbody;
     Transform trans;
-    public int speed = 100;
+    public int speed = 50;
     public Bullet bullet;
-    private int bulletSpeed = 10;
-    private int canShoot = 0;
+    private int bulletSpeed = 8;
     // Use this for initialization
     void Start () {
         rbody = gameObject.GetComponent<Rigidbody2D>();
@@ -37,12 +36,11 @@ public class Controll : MonoBehaviour {
             float direction = -(trans.rotation.eulerAngles.z - 90) * Mathf.PI / 180;
             rbody.AddForce(new Vector2(force * Mathf.Cos(direction), -force * Mathf.Sin(direction)));
         }
-        if (Input.GetKey(KeyCode.Space) && canShoot-- <= 0)
+        if (Input.GetKeyUp(KeyCode.Space))
         {
             float direction = -(trans.rotation.eulerAngles.z - 90) * Mathf.PI / 180;
-            GameObject bullet = Instantiate(Resources.Load("Bullet"), new Vector3(trans.position.x - (Mathf.Cos(direction) / 2), trans.position.y + (Mathf.Sin(direction) / 2), 0), Quaternion.identity) as GameObject;
+            GameObject bullet = Instantiate(Resources.Load("Bullet"), new Vector3(trans.position.x - (Mathf.Cos(direction) / 4), trans.position.y + (Mathf.Sin(direction) / 4), 0), Quaternion.identity) as GameObject;
             bullet.GetComponent<Rigidbody2D>().velocity = GetComponent<Rigidbody2D>().velocity + new Vector2(-Mathf.Cos(direction)* bulletSpeed, Mathf.Sin(direction) * bulletSpeed);
-            canShoot = 20;
         }
     }
 }

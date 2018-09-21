@@ -26,8 +26,8 @@ GameObject:
   - component: {fileID: 114573835065275598}
   - component: {fileID: 114460962557498896}
   m_Layer: 0
-  m_Name: AstroidSmall
-  m_TagString: Untagged
+  m_Name: AsteroidMedium
+  m_TagString: Asteroid
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -56,11 +56,11 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 1
+  m_Mass: 2
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 0
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: facb2b8ae131b6e4eb332c2a3568f7c2, type: 2}
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
@@ -91,7 +91,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 38982774f7050b441803aa8854fc282b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speedScale: 10
 --- !u!114 &114460962557498896
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -114,7 +113,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e94a637fb9be3294caaed144a01b36bd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speedScale: 10
 --- !u!212 &212233155099563382
 SpriteRenderer:
   m_ObjectHideFlags: 1
