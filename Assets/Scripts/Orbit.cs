@@ -7,8 +7,6 @@ public class Orbit : MonoBehaviour {
     private Transform trans;
     private float mass;
     // Use this for initialization
-
-    float bigMass = 10;
     //TODO
 
     void Start()
@@ -16,12 +14,12 @@ public class Orbit : MonoBehaviour {
         rbody = gameObject.GetComponent<Rigidbody2D>();
         trans = gameObject.GetComponent<Transform>();
         mass = rbody.mass;
-        if(rbody.velocity.Equals(new Vector2(0, 0)))
+        if (rbody.velocity.Equals(new Vector2(0, 0)))
         {
             float x = trans.position.x;
             float y = trans.position.y;
-            float r = Mathf.Sqrt((x * x) + (y * y))+1;
-            rbody.velocity = new Vector2((-Mathf.Sqrt(bigMass) * y / (Mathf.Sqrt(r) * r)), (Mathf.Sqrt(bigMass) * x / (Mathf.Sqrt(r) * r)));
+            float r = Mathf.Sqrt((x * x) + (y * y));
+            rbody.velocity = new Vector2((-Mathf.Sqrt(UranusClass.uranusMass) * y / (Mathf.Sqrt(r) * r)), (Mathf.Sqrt(UranusClass.uranusMass) * x / (Mathf.Sqrt(r) * r)));
         }
     }
 
@@ -29,5 +27,12 @@ public class Orbit : MonoBehaviour {
     void Update()
     {
 
+    }
+    public void ConformToOrbit()
+    {
+        float x = trans.position.x;
+        float y = trans.position.y;
+        float r = Mathf.Sqrt((x * x) + (y * y));
+        rbody.velocity = new Vector2((-Mathf.Sqrt(UranusClass.uranusMass) * y / (Mathf.Sqrt(r) * r)), (Mathf.Sqrt(UranusClass.uranusMass) * x / (Mathf.Sqrt(r) * r)));
     }
 }

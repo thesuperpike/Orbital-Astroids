@@ -7,20 +7,22 @@ public class Asteroid : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
         mass = Mathf.RoundToInt(GetComponent<Rigidbody2D>().mass);
-	}
+    }
 
     // Update is called once per frame
     void Update () {
-		
-	}
+        
+    }
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.collider.tag != "Asteroid"    )
         {
+            UranusClass.score++;
             Vector2 oldVelocity = gameObject.GetComponent<Rigidbody2D>().velocity;
             if (mass == 1)
             {
                 Destroy(gameObject);
+                
             }
             else if (mass == 2)
             {

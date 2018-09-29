@@ -6,7 +6,6 @@ public class Gravity : MonoBehaviour {
     Rigidbody2D rbody;
     Transform trans;
     float mass;
-    float bigMass = 10;
 
     // Use this for initialization
     void Start () {
@@ -26,6 +25,6 @@ public class Gravity : MonoBehaviour {
         float distanceSquared = (x * x) + (y * y);
         x = -x / Mathf.Sqrt(distanceSquared);
         y = -y / Mathf.Sqrt(distanceSquared);
-        rbody.AddForce(new Vector2(mass * bigMass * x / distanceSquared,mass * bigMass * y / distanceSquared));
+        rbody.AddForce(new Vector2(mass * UranusClass.uranusMass * x / distanceSquared,mass * UranusClass.uranusMass * y / distanceSquared));
     }
 }
