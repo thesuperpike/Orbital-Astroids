@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Gravity : MonoBehaviour {
-    public static float speedScale = 3;
     Rigidbody2D rbody;
     Transform trans;
     float mass;
+    float bigMass = 10;
 
     // Use this for initialization
     void Start () {
@@ -26,6 +26,6 @@ public class Gravity : MonoBehaviour {
         float distanceSquared = (x * x) + (y * y);
         x = -x / Mathf.Sqrt(distanceSquared);
         y = -y / Mathf.Sqrt(distanceSquared);
-        rbody.AddForce(new Vector2(speedScale * mass * mass * x / distanceSquared, speedScale * mass * mass * y / distanceSquared));
+        rbody.AddForce(new Vector2(mass * bigMass * x / distanceSquared,mass * bigMass * y / distanceSquared));
     }
 }

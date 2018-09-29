@@ -6,8 +6,11 @@ public class Orbit : MonoBehaviour {
     private Rigidbody2D rbody;
     private Transform trans;
     private float mass;
-    public static float speedScale = 3;
     // Use this for initialization
+
+    float bigMass = 10;
+    //TODO
+
     void Start()
     {
         rbody = gameObject.GetComponent<Rigidbody2D>();
@@ -17,8 +20,8 @@ public class Orbit : MonoBehaviour {
         {
             float x = trans.position.x;
             float y = trans.position.y;
-            float r = Mathf.Sqrt((x * x) + (y * y));
-            rbody.velocity = new Vector2((-Mathf.Sqrt(speedScale * mass) * y / (Mathf.Sqrt(r) * r)), (Mathf.Sqrt(speedScale * mass) * x / (Mathf.Sqrt(r) * r)));
+            float r = Mathf.Sqrt((x * x) + (y * y))+1;
+            rbody.velocity = new Vector2((-Mathf.Sqrt(bigMass) * y / (Mathf.Sqrt(r) * r)), (Mathf.Sqrt(bigMass) * x / (Mathf.Sqrt(r) * r)));
         }
     }
 
