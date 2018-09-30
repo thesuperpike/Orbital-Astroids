@@ -8,14 +8,11 @@ public class OrbitalCalculator : MonoBehaviour {
     Vector2 eccentricity;
     public GameObject greenEllipse, blackEllipse;
     //Initialize for efficiency
-    float mass = 10;
-    //TODO
-    //TODO
-    //TODO
+    float mass;
 
     // Use this for initialization
     void Start () {
-		
+        mass = UranusClass.uranusMass;
 	}
 	
 	// Update is called once per frame
@@ -31,14 +28,15 @@ public class OrbitalCalculator : MonoBehaviour {
         b = calculateSemiMinorAxisDist();
         c = calculateCenterOffset();
         littleOmega = calculateLittleOmega();
+        Vector3 posVec = new Vector3(c * Mathf.Cos(littleOmega), c * Mathf.Sin(littleOmega), 0);
+        Vector3 eulerVec = new Vector3(0, 0, 180 / Mathf.PI * littleOmega);
+        greenEllipse.GetComponent<Transform>().position = posVec;
+        greenEllipse.GetComponent<Transform>().eulerAngles = eulerVec;
+        greenEllipse.GetComponent<Transform>().localScale = new Vector3(a * 2 + 0.04f, b * 2 + 0.04f, 1);
 
-        greenEllipse.GetComponent<Transform>().position = new Vector3(c * Mathf.Cos(littleOmega), c * Mathf.Sin(littleOmega), 0);
-        greenEllipse.GetComponent<Transform>().eulerAngles = new Vector3(0, 0, 180 / Mathf.PI * littleOmega);
-        greenEllipse.GetComponent<Transform>().localScale = new Vector3(a * 2 + 0.05f, b * 2 + 0.05f, 1);
-
-        blackEllipse.GetComponent<Transform>().position = new Vector3(c * Mathf.Cos(littleOmega), c * Mathf.Sin(littleOmega), 0);
-        blackEllipse.GetComponent<Transform>().eulerAngles = new Vector3(0, 0, 180 / Mathf.PI * littleOmega);
-        blackEllipse.GetComponent<Transform>().localScale = new Vector3(a * 2 - 0.05f, b * 2 - 0.05f, 1);
+        blackEllipse.GetComponent<Transform>().position = posVec;
+        blackEllipse.GetComponent<Transform>().eulerAngles = eulerVec;
+        blackEllipse.GetComponent<Transform>().localScale = new Vector3(a * 2 , b * 2 , 1);
     }
 
     float calculateSemiMajorAxisDist()

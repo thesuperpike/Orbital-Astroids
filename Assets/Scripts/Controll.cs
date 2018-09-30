@@ -5,7 +5,7 @@ using UnityEngine;
 public class Controll : MonoBehaviour {
     Rigidbody2D rbody;
     Transform trans;
-    public int speed = 50;
+    int speed = 30;
     public Bullet bullet;
     private int bulletSpeed = 8;
     // Use this for initialization
@@ -19,12 +19,12 @@ public class Controll : MonoBehaviour {
         float force = speed * Time.deltaTime;
         if (Input.GetKey(KeyCode.RightArrow))
         {
-            trans.Rotate(new Vector3(0,0,-force));
+            trans.Rotate(new Vector3(0,0,-force*7));
             
         }
         if (Input.GetKey(KeyCode.LeftArrow))
         {
-            trans.Rotate(new Vector3(0, 0, force));
+            trans.Rotate(new Vector3(0, 0, force*7));
         }
         if (Input.GetKey(KeyCode.UpArrow))
         {
@@ -36,7 +36,7 @@ public class Controll : MonoBehaviour {
             float direction = -(trans.rotation.eulerAngles.z - 90) * Mathf.PI / 180;
             rbody.AddForce(new Vector2(force * Mathf.Cos(direction), -force * Mathf.Sin(direction)));
         }
-        if (Input.GetKeyUp(KeyCode.Space))
+        if (Input.GetKey(KeyCode.Space))
         {
             float direction = -(trans.rotation.eulerAngles.z - 90) * Mathf.PI / 180;
             GameObject bullet = Instantiate(Resources.Load("Bullet"), new Vector3(trans.position.x - (Mathf.Cos(direction) / 4), trans.position.y + (Mathf.Sin(direction) / 4), 0), Quaternion.identity) as GameObject;

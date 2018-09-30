@@ -66,6 +66,7 @@
     <Compile Include="Assets\Scripts\Controll.cs" />
     <Compile Include="Assets\Scripts\Gravity.cs" />
     <Compile Include="Assets\Scripts\Orbit.cs" />
+    <Compile Include="Assets\Scripts\OrbitalCalculator.cs" />
     <Compile Include="Assets\Scripts\SpaceDust.cs" />
     <Compile Include="Assets\Scripts\UranusClass.cs" />
     <Compile Include="Assets\Scripts\ZoomOut.cs" />
