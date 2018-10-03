@@ -5,7 +5,6 @@ using UnityEngine;
 public class Orbit : MonoBehaviour {
     private Rigidbody2D rbody;
     private Transform trans;
-    private float mass;
     // Use this for initialization
     //TODO
 
@@ -13,7 +12,6 @@ public class Orbit : MonoBehaviour {
     {
         rbody = gameObject.GetComponent<Rigidbody2D>();
         trans = gameObject.GetComponent<Transform>();
-        mass = rbody.mass;
         if (rbody.velocity.Equals(new Vector2(0, 0)))
         {
             float x = trans.position.x;

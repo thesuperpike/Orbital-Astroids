@@ -6,6 +6,7 @@ public class Bullet : MonoBehaviour {
     private Vector2 initVel;
     private Vector2 initDir;
     private float delay = 0.4f;
+    public int power;
     // Use this for initialization
     void Start () {
         Destroy(gameObject, delay);
@@ -15,11 +16,19 @@ public class Bullet : MonoBehaviour {
 	void Update () {
 		
 	}
-    private void OnCollisionEnter2D(Collision2D collision)
+
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.collider.tag != "Bullet")
+        if (collision.tag != "Bullet" && collision.tag != "Player")
         {
-            Destroy(gameObject);
+            if (power < 60 || collision.name == "Uranus")
+            {
+                Destroy(gameObject);
+            }
+            else
+            {
+                power = power - 60;
+            }
         }
     }
 }

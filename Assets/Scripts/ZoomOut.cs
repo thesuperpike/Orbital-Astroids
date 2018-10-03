@@ -4,14 +4,15 @@ using UnityEngine;
 
 public class ZoomOut : MonoBehaviour {
     int previousScore = 0;
+
 	// Use this for initialization
 	void Start () {
-        //InvokeRepeating("ZoomOutCamera", 2f, .2f);
-	}
+
+    }
 	
 	// Update is called once per frame
 	void Update () {
-		
+        
 	}
 
     private void FixedUpdate()
@@ -27,4 +28,5 @@ public class ZoomOut : MonoBehaviour {
     {
         gameObject.GetComponent<Camera>().orthographicSize += .01f;
     }
+
 }
