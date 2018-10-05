@@ -69,6 +69,7 @@
     <Compile Include="Assets\Scripts\OrbitalCalculator.cs" />
     <Compile Include="Assets\Scripts\SpaceDust.cs" />
     <Compile Include="Assets\Scripts\UranusClass.cs" />
+    <Compile Include="Assets\Scripts\WelcomeScript.cs" />
     <Compile Include="Assets\Scripts\ZoomOut.cs" />
     <Reference Include="UnityEditor.StandardEvents">
       <HintPath>C:/Users/thesu/git/Orbital-Astroids/Library/ScriptAssemblies/UnityEditor.StandardEvents.dll</HintPath>

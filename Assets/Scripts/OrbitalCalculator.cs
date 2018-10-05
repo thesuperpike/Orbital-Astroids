@@ -14,9 +14,10 @@ public class OrbitalCalculator : MonoBehaviour {
     void Start () {
         mass = UranusClass.uranusMass;
 	}
-	
-	// Update is called once per frame
-	void Update () {
+
+    // Update is called once per frame
+    void Update() {
+
         velocity = gameObject.GetComponent<Rigidbody2D>().velocity.magnitude;
         r = gameObject.GetComponent<Rigidbody2D>().position.magnitude;
 
@@ -25,7 +26,17 @@ public class OrbitalCalculator : MonoBehaviour {
         e = eccentricity.magnitude;
 
         a = calculateSemiMajorAxisDist();
+        if (Mathf.Abs(a) > 33f || float.IsNaN(a))
+        {
+            blackEllipse.GetComponent<Transform>().localScale = new Vector3(0, 0, 0);
+            greenEllipse.GetComponent<Transform>().localScale = new Vector3(0, 0, 0);
+            return;
+        }
         b = calculateSemiMinorAxisDist();
+        if (float.IsNaN(b))
+        {
+            return;
+        }
         c = calculateCenterOffset();
         littleOmega = calculateLittleOmega();
         Vector3 posVec = new Vector3(c * Mathf.Cos(littleOmega), c * Mathf.Sin(littleOmega), 0);
@@ -36,7 +47,8 @@ public class OrbitalCalculator : MonoBehaviour {
 
         blackEllipse.GetComponent<Transform>().position = posVec;
         blackEllipse.GetComponent<Transform>().eulerAngles = eulerVec;
-        blackEllipse.GetComponent<Transform>().localScale = new Vector3(a * 2 , b * 2 , 1);
+        blackEllipse.GetComponent<Transform>().localScale = new Vector3(a * 2, b * 2, 1);
+
     }
 
     float calculateSemiMajorAxisDist()
@@ -72,5 +84,10 @@ public class OrbitalCalculator : MonoBehaviour {
     Vector2 calculateEccentricityVector(Vector2 pos, Vector2 vel)
     {
         return (((Vector2.Dot(vel, vel) * pos) - (Vector2.Dot(pos, vel)*vel))/mass) - (pos / pos.magnitude);
+    }
+    private void OnDestroy()
+    {
+        Destroy(greenEllipse);
+        Destroy(blackEllipse);
     }
 }

@@ -21,13 +21,13 @@ public class Bullet : MonoBehaviour {
     {
         if (collision.tag != "Bullet" && collision.tag != "Player")
         {
-            if (power < 60 || collision.name == "Uranus")
+            if (power < 20 || collision.name == "Uranus")
             {
                 Destroy(gameObject);
             }
             else
             {
-                power = power - 60;
+                power = power - 55;
             }
         }
     }
